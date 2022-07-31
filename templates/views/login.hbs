@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {{>header}}
+    <title>Register</title>
+</head>
+<body>
+    {{>navbar}}
+<div class="container">
+  <h1>Login</h1>
+  <form class="myForm" action="/login" method="post">
+<input class="myInput" type="email" name="email"   placeholder=" email">
+<input class="myInput" type="password"  name="password" placeholder=" password">
+    <button type="submit" class="btn">Login</button>
+  </form>
+
+   <ul class="loginbutton" >
+        <li><a href="/register">Create An Accout ?</a></li>
+    </ul>
+</div>
+</body>
+ </html>

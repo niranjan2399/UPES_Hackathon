@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {{>header}}
+    <title>Register</title>
+<script src="../static/index.js"></script>
+</head>
+<body>
+    {{>navbar}}
+    <ul class="loginbutton" >
+        <li><a href="/login">Already Have An Accout ?</a></li>
+    </ul>
+<div class="container">
+  <h1>Contact Us</h1>
+  <form class="myForm" action="/register" method="post">
+<input class="myInput" type="text"  name="firstname"    placeholder=" First name">
+<input class="myInput" type="text"  name="lastname"    placeholder=" Last name">
+<input class="myInput" type="phone" name="phone"   placeholder=" phone">
+<input class="myInput" type="email" name="email"   placeholder=" email">
+<input class="myInput" type="password"  name="password" placeholder=" password">
+<input class="myInput" type="password"  name="confirmpassword" placeholder="confirm password">
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
+</body>
+ </html>
