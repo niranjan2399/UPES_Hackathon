@@ -53,6 +53,13 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
+app.get('/cart', (req, res) => {
+  res.render('cart');
+});
+app.get('/mail', (req, res) => {
+  res.render('mail');
+});
+
 app.post('/register', async (req, res) => {
   try {
     const password = req.body.password;
@@ -76,7 +83,44 @@ app.post('/register', async (req, res) => {
     res.status(404).send(error);
   }
 });
+app.post('/mail', async (req, res) => {
+  try {
+    const mail = req.body.email;
+    const useremail = await It.findOne({ email: mail });
+    if (mail == useremail.email) {
+      var nodemailer = require('nodemailer');
 
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'campusquest30@gmail.com',
+          pass: 'zexsnicaqnwavjht'
+        }
+      });
+
+      var mailOptions = {
+        from: 'campusquest30@gmail.com',
+        to: mail,
+        subject: 'Sending Email using Node.js',
+        text: `Hi Smartherd, thank you for your nice Node.js tutorials.
+          I will donate 50$ for this course. Please send me payment options.`
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      res.status(200).render('index');
+    } else {
+      res.send('Login First');
+    }
+  } catch (e) {
+    res.status(404).send(error);
+  }
+})
 // login check
 // if we use async then along with we use try catch for error detection
 app.post('/login', async (req, res) => {
