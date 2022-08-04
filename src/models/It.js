@@ -12,6 +12,8 @@ const techSchema = new mongoose.Schema({
   phone: {
     type: String,
     required: true,
+    max: 10,
+    min: 10,
     unique: true,
   },
   email: {
@@ -26,8 +28,9 @@ const techSchema = new mongoose.Schema({
   confirmpassword: {
     type: String,
     required: true,
-  },
+  }
 });
+
 
 // now we need to create colllection
 const It = new mongoose.model('It', techSchema);
